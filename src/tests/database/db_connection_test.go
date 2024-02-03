@@ -1,4 +1,4 @@
-package test
+package database
 
 import (
 	"Redis/redis-impl-go/src/app/utils/database"
