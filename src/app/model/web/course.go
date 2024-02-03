@@ -1,22 +1,22 @@
 package web
 
 type CourseCreateInput struct {
-	AuthorId    int
-	Title       string
-	Slug        string
-	Description string
-	Perks       string
-	Price       int
-	Banner      string
+	AuthorId    int    `json:"author_id"`
+	Title       string `json:"title"`
+	Slug        string `json:"slug"`
+	Description string `json:"description"`
+	Perks       string `json:"perks"`
+	Price       int    `json:"price"`
+	Banner      string `json:"banner"`
 }
 
 type CourseResponse struct {
-	Id          int
-	AuthorId    int
-	Title       string
-	Slug        string
-	Description string
-	Perks       string
-	Price       int
-	Banner      string
+	Id          int    `json:"id"`
+	AuthorId    int    `json:"author_id"`
+	Title       string `json:"title"`
+	Slug        string `json:"slug"`
+	Description string `json:"description"`
+	Perks       string `json:"perks"`
+	Price       int    `json:"price"`
+	Banner      string `json:"banner"`
 }

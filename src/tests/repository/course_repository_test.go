@@ -2,6 +2,7 @@ package repository
 
 import (
 	"Redis/redis-impl-go/src/app/model/domain"
+	"Redis/redis-impl-go/src/tests"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -17,11 +18,11 @@ func TestSave(t *testing.T) {
 		Banner:      "java.png",
 	}
 
-	save := CourseRepo.Save(course)
+	save := tests.CourseRepo.Save(course)
 	assert.NotNil(t, save.Id)
 }
 
 func TestFindAll(t *testing.T) {
-	courses := CourseRepo.FindAll()
+	courses := tests.CourseRepo.FindAll()
 	assert.Equal(t, 1, len(courses))
 }
