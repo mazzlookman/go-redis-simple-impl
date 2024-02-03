@@ -12,6 +12,10 @@ type CourseServiceImpl struct {
 	repository.CourseRepository
 }
 
+func (s *CourseServiceImpl) FindAllWithRedis() []web.CourseResponse {
+	return nil
+}
+
 func (s *CourseServiceImpl) Create(input web.CourseCreateInput) web.CourseResponse {
 	course := domain.Course{}
 	course.AuthorId = input.AuthorId
@@ -29,6 +33,9 @@ func (s *CourseServiceImpl) Create(input web.CourseCreateInput) web.CourseRespon
 
 func (s *CourseServiceImpl) FindAll() []web.CourseResponse {
 	courses := s.CourseRepository.FindAll()
+
+	// save to redis
+
 	return response.ToCourseResponses(courses)
 }
 

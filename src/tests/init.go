@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	db            = database.DBConnect()
+	db            = database.MysqlConnect()
 	CourseRepo    = implrepository.NewCourseRepository(db)
 	CourseService = implservice.NewCourseService(CourseRepo)
 )

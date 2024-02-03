@@ -28,5 +28,5 @@ func TestCreate(t *testing.T) {
 func TestGetAll(t *testing.T) {
 	courseResponses := tests.CourseService.FindAll()
 	assert.NotNil(t, courseResponses)
-	assert.Equal(t, 2, len(courseResponses))
+	assert.Equal(t, 10000, len(courseResponses))
 }

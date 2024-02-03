@@ -6,7 +6,12 @@ import (
 	"testing"
 )
 
-func TestConnection(t *testing.T) {
-	dbConnect := database.DBConnect()
+func TestMysqlConnection(t *testing.T) {
+	dbConnect := database.MysqlConnect()
 	assert.NotNil(t, dbConnect)
+}
+
+func TestRedisConnection(t *testing.T) {
+	redisClient := database.RedisClient()
+	assert.NotNil(t, redisClient)
 }

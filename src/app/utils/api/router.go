@@ -11,7 +11,7 @@ import (
 func NewRouter() *fiber.App {
 	router := fiber.New()
 
-	db := database.DBConnect()
+	db := database.MysqlConnect()
 	courseRepository := impl.NewCourseRepository(db)
 	courseService := implservice.NewCourseService(courseRepository)
 	courseController := implcontroller.NewCourseController(courseService)
