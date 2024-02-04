@@ -3,10 +3,14 @@ package service
 import (
 	"Redis/redis-impl-go/src/app/model/web"
 	"Redis/redis-impl-go/src/tests"
+	"context"
 	"github.com/stretchr/testify/assert"
+	"log"
 	"strconv"
 	"testing"
 )
+
+var ctx = context.Background()
 
 func TestCreate(t *testing.T) {
 	for i := 0; i < 10000; i++ {
@@ -29,4 +33,17 @@ func TestGetAll(t *testing.T) {
 	courseResponses := tests.CourseService.FindAll()
 	assert.NotNil(t, courseResponses)
 	assert.Equal(t, 10000, len(courseResponses))
+}
+
+func TestGetAllWithRedis(t *testing.T) {
+	isSaveToRedis := tests.CourseService.IsSaveToRedis()
+	if isSaveToRedis {
+		log.Println("Get data from redis")
+		findAllWithRedis := tests.CourseService.FindAllWithRedis()
+
+		log.Println(findAllWithRedis)
+		return
+	}
+
+	log.Println(isSaveToRedis)
 }

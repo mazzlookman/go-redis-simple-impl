@@ -25,8 +25,14 @@ func (c *CourseControllerImpl) Create(ctx *fiber.Ctx) error {
 }
 
 func (c *CourseControllerImpl) FindAll(ctx *fiber.Ctx) error {
-	courseResponses := c.CourseService.FindAll()
+	if c.CourseService.IsSaveToRedis() {
+		findAllWithRedis := c.CourseService.FindAllWithRedis()
+		ctx.JSON(response.APIResponse(200, "list of courses from redis", &findAllWithRedis))
 
+		return nil
+	}
+
+	courseResponses := c.CourseService.FindAll()
 	ctx.JSON(response.APIResponse(200, "list of courses", &courseResponses))
 	return nil
 }

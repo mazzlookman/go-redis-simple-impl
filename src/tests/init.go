@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	db            = database.MysqlConnect()
-	CourseRepo    = implrepository.NewCourseRepository(db)
-	CourseService = implservice.NewCourseService(CourseRepo)
+	Db            = database.MysqlConnect()
+	Rdb           = database.RedisClient()
+	CourseRepo    = implrepository.NewCourseRepository(Db)
+	CourseService = implservice.NewCourseService(CourseRepo, Rdb)
 )

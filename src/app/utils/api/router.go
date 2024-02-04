@@ -12,8 +12,9 @@ func NewRouter() *fiber.App {
 	router := fiber.New()
 
 	db := database.MysqlConnect()
+	rdb := database.RedisClient()
 	courseRepository := impl.NewCourseRepository(db)
-	courseService := implservice.NewCourseService(courseRepository)
+	courseService := implservice.NewCourseService(courseRepository, rdb)
 	courseController := implcontroller.NewCourseController(courseService)
 
 	api := router.Group("/api")
